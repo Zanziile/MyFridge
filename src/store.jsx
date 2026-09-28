@@ -112,6 +112,10 @@ export function StoreProvider({ children }) {
     setFridgeItems(prev => prev.filter(i => i.id !== id))
   }, [setFridgeItems])
 
+  const removeFromHistory = useCallback((name) => {
+    setHistory(prev => prev.filter(h => h.name.toLowerCase() !== name.toLowerCase()))
+  }, [setHistory])
+
   // ── Recipes ──────────────────────────────────────────────────────────────
 
   const addRecipe = useCallback((name, ingredients) => {
@@ -181,7 +185,7 @@ export function StoreProvider({ children }) {
       recipes,
       shoppingList,
       addCategory, deleteCategory,
-      addToFridge, removeFromFridge,
+      addToFridge, removeFromFridge, removeFromHistory,
       addRecipe, updateRecipe, deleteRecipe, markCooked,
       addToShoppingList, toggleShoppingItem, removeShoppingItem, clearDoneItems, addMissingToList,
     }}>

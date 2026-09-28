@@ -72,6 +72,16 @@ input[type="range"] {
   animation: pop-in 0.15s ease-out;
 }
 
+/* Bottom sheet slide-up */
+@keyframes slide-up {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
 /* ─── Telegram theme CSS variables (fallback for non-TMA) ─────── */
 
 :root {
