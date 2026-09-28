@@ -23,7 +23,7 @@ export default function BuyList() {
     .filter(h => !histSearch || h.name.toLowerCase().includes(histSearch.toLowerCase()))
 
   function moveDoneToFridge() {
-    shoppingList.filter(i => i.done).forEach(item => addToFridge(item.name))
+    shoppingList.filter(i => i.done).forEach(item => addToFridge(item.name, item.category))
     clearDoneItems()
   }
 
@@ -164,7 +164,7 @@ export default function BuyList() {
                             </p>
                           </div>
                           <button
-                            onClick={() => !inList && addToShoppingList(item.name)}
+                            onClick={() => !inList && addToShoppingList(item.name, null, item.category)}
                             disabled={inList}
                             className={`shrink-0 text-xs px-3 py-1.5 rounded-xl font-medium transition-colors ${
                               inList
@@ -190,7 +190,7 @@ export default function BuyList() {
         <AddProductPage
           mode="shopping"
           onClose={() => setShowAddPage(false)}
-          onAdd={(name) => addToShoppingList(name)}
+          onAdd={(name, cat) => addToShoppingList(name, null, cat)}
         />
       )}
     </div>

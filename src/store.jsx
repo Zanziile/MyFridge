@@ -145,12 +145,12 @@ export function StoreProvider({ children }) {
 
   // ── Shopping list ─────────────────────────────────────────────────────────
 
-  const addToShoppingList = useCallback((name, fromRecipe = null) => {
+  const addToShoppingList = useCallback((name, fromRecipe = null, category = null) => {
     const trimmed = name.trim()
     if (!trimmed) return
     setShoppingList(prev => {
       if (prev.some(i => !i.done && i.name.toLowerCase() === trimmed.toLowerCase())) return prev
-      return [...prev, { id: Date.now(), name: trimmed, done: false, fromRecipe }]
+      return [...prev, { id: Date.now(), name: trimmed, done: false, fromRecipe, category }]
     })
   }, [setShoppingList])
 
